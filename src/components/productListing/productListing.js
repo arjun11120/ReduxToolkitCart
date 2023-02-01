@@ -4,7 +4,7 @@ import { getPost } from "../../redux/features/postSlice";
 import { Card, Button } from "react-bootstrap";
 
 import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 import "./cards.css";
 
@@ -49,26 +49,33 @@ function ProductListing() {
               >
                 Buy Your Product
               </Button>
-              <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title>{user.title}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <Card.Img className='productImage' variant="top" src={user.image}/>
-                {user.description}
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                  <Button variant="primary">Add to Cart</Button>
-                </Modal.Footer>
-              </Modal>
+              <Offcanvas show={show} onHide={handleClose} end>
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title>Check out</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  <div>
+                    <div>
+                      <div>{user.title}</div>
+                      <img src={user.image} alt=" " />
+                      <span>{user.description}</span>
+                    </div>
+                    <div class="quantity">
+                      <a href="#" class="quantity__minus">
+                        <span>-</span>
+                      </a>
+                      <input
+                        name="quantity"
+                        type="text"
+                        class="quantity__input"
+                      />
+                      <a href="/" class="quantity__plus">
+                        <span>+</span>
+                      </a>
+                    </div>
+                  </div>
+                </Offcanvas.Body>
+              </Offcanvas>
             </Card.Body>
           </Card>
         </div>
