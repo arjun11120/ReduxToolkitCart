@@ -23,5 +23,8 @@ const postSlice = createSlice({
       state.loading = false;
     },
   },
+  reducers:{
+    
+  }
 });
 export default postSlice.reducer;

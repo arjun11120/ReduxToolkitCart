@@ -16,7 +16,7 @@
   transition: 0.7s;
 }
 .cardLay {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 0px;
   width: 15rem;
   height: 30rem;
@@ -26,6 +26,10 @@
 }
 .btn {
   margin: 20px;
+}
+.btpBtn{
+  background: #d5a249 !important;
+  border: none !important;
 }
 .user-rating {
   background: green;
@@ -61,7 +65,6 @@ p {
 }
 .modal-body {
   background: white;
-  display: flex;
 }
 .modal-header {
   background: white;
@@ -73,53 +76,47 @@ p {
   margin: 8px;
 }
 .offcanvas-backdrop.show {
-    opacity: .1 !important;
+  opacity: 0.1 !important;
 }
 .offcanvas-body img {
-    height: 130px;
-    width: auto;
-    padding: 10px;
+  width: 130px;
+  padding: 10px;
 }
-.quantity__minus,
-.quantity__plus {
-  display: block;
-  width: 22px;
-  height: 23px;
-  margin: 0;
-  background: #dee0ee;
-  text-decoration: none;
+.offcanvas-body {
+  padding: 0 !important;
+}
+.off-item {
+  background: white;
   text-align: center;
-  line-height: 23px;
 }
-.quantity__minus:hover,
-.quantity__plus:hover {
-  background: #575b71;
-  color: #fff;
-} 
-.quantity__minus {
-  border-radius: 3px 0 0 3px;
+.off-body {
+  padding: 15px;
+  font-size: 11px;
 }
-.quantity__plus {
-  border-radius: 0 3px 3px 0;
+.off-order {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin: 10px;
+  padding: 5px 15px;
 }
-.quantity__input {
-  width: 32px;
-  height: 19px;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  border-top: 2px solid #dee0ee;
-  border-bottom: 2px solid #dee0ee;
-  border-left: 1px solid #dee0ee;
-  border-right: 2px solid #dee0ee;
-  background: #fff;
-  color: #8184a1;
+.counter-item svg{
+  vertical-align: middle;
 }
-.quantity__minus:link,
-.quantity__plus:link {
-  color: #8184a1;
-} 
-.quantity__minus:visited,
-.quantity__plus:visited {
-  color: #fff;
+.off-counter{
+  justify-content: space-between;
+}
+.text-13{
+  font-size: 13px;
+}
+.off-btn button{
+  width: 100%;
+    border: none;
+    background-color: #d5a249;
+    color: #fff!important;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    height: 50px;
+    line-height: 50px;
 }
