@@ -22,9 +22,6 @@ const postSlice = createSlice({
     [getPost.rejected]: (state, action) => {
       state.loading = false;
     },
-  },
-  reducers:{
-    
   }
-});
+});  
 export default postSlice.reducer;

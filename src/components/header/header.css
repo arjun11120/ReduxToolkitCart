@@ -1,0 +1,20 @@
+.cart-icon {
+  height: 14px;
+  vertical-align: middle;
+}
+.me-auto span {
+  padding: 5px;
+  vertical-align: middle;
+}
+.noti-cart {
+  margin: 6px;
+  top: -14px;
+  left: 0px;
+  background: #d5a249;
+  color: white;
+  height: 18px;
+  padding: 0px 6px !important;
+  width: 18px;
+  border-radius: 50%;
+  font-size: 13px;
+}
