@@ -14,10 +14,9 @@ function App() {
   return (
     <Router>
       <Routes>
-      <Route exact path="/" element={<ProductListing />} />
-      <Route exact path="/cart" element={<CartList />} />
-
-    </Routes>
+        <Route exact path="/" element={<ProductListing />} />
+        <Route exact path="/cart" element={<CartList />} />
+      </Routes>
     </Router>
     // <>
     //   <Header/>

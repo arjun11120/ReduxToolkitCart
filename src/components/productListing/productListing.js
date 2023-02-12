@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAdd} from "@fortawesome/free-solid-svg-icons"
 import {faMinus} from "@fortawesome/free-solid-svg-icons"
 import Header from "../header/header"
+import { useNavigate } from 'react-router-dom';
 import{
   addToCart
 }
@@ -19,6 +20,7 @@ import {
 import "./cards.css";
 
 function ProductListing() {
+  
   const [show, setShow] = useState(false);
   const [data ,setData] = useState([])
   const handleClose = () => setShow(false);
@@ -38,6 +40,8 @@ function ProductListing() {
   const { cartList } = useSelector((state) => state.cart);
   console.log(' cartlist in product page',cartList );
   const dispatch = useDispatch();
+  
+  const navigate = useNavigate();
   useEffect(() => {
     // console.log(data);
     dispatch(getPost());
@@ -45,6 +49,8 @@ function ProductListing() {
   }, []);
   const handleAddToCart = (user) => {
     dispatch(addToCart(user));
+    
+    navigate('/cart');
   };
   // console.log('post',posts);
   // const user = posts.filter((item) => item.id === data);
