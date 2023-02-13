@@ -3,19 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "../../redux/features/postSlice";
 import { Card, Button } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAdd} from "@fortawesome/free-solid-svg-icons"
-import {faMinus} from "@fortawesome/free-solid-svg-icons"
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import {faAdd} from "@fortawesome/free-solid-svg-icons"
+// import {faMinus} from "@fortawesome/free-solid-svg-icons"
 import Header from "../header/header"
 import { useNavigate } from 'react-router-dom';
 import{
   addToCart
 }
 from '../../redux/features/selectSlice';
-import {
-  increment,
-  decrement,
-} from '../../redux/features/counterSlice';
+// import {
+//   increment,
+//   decrement,
+// } from '../../redux/features/counterSlice';
 
 import "./cards.css";
 
@@ -35,7 +35,7 @@ function ProductListing() {
   //   setShow(true);
   //   setId(id);
   // };
-  const count = useSelector((state) => state.count.count)
+  // const count = useSelector((state) => state.count.count)
   const { posts } = useSelector((state) => state.post);
   const { cartList } = useSelector((state) => state.cart);
   console.log(' cartlist in product page',cartList );
@@ -152,13 +152,13 @@ function ProductListing() {
                     <h6>Order Details</h6>
                     <div className="off-counter d-flex">
                     <span className='count-text text-13'>Number of Items
-                    <button className='round-btn' onClick={() => dispatch(decrement())}><FontAwesomeIcon className='text-secondary text-13' icon={faMinus}></FontAwesomeIcon></button>
-                    <button className='round-btn' onClick={() => dispatch(increment())}><FontAwesomeIcon className='text-secondary text-13' icon={faAdd}></FontAwesomeIcon></button>
+                    {/* <button className='round-btn' onClick={() => dispatch(decrement())}><FontAwesomeIcon className='text-secondary text-13' icon={faMinus}></FontAwesomeIcon></button> */}
+                    {/* <button className='round-btn' onClick={() => dispatch(increment())}><FontAwesomeIcon className='text-secondary text-13' icon={faAdd}></FontAwesomeIcon></button> */}
                     {/* <button className='round-btn' onClick={addCount}><FontAwesomeIcon className='text-secondary text-13' icon={faAdd}></FontAwesomeIcon></button> */}
                     {/* <button className='round-btn' onClick={addCount} ><FontAwesomeIcon className='text-secondary text-13' icon={faAdd}></FontAwesomeIcon></button> */}
                     </span>
                     <div className="off-sub">  
-                      <span className='count-text text-13'>{count}</span>
+                      {/* <span className='count-text text-13'>{count}</span> */}
                     </div>
                     </div>
                     <div className="off-counter d-flex">

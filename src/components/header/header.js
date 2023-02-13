@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./header.css";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function CollapsibleExample() {
   const { cartList = [] } = useSelector((state) => state.cart);
@@ -14,8 +15,8 @@ function CollapsibleExample() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Product</Nav.Link>
-            <Nav.Link href="/cart">
+            <Link to="/">Product</Link>
+            <Link to="/cart">
               <div className="position-relative">
               <svg className="cart-icon" viewBox="0 0 16 16">
                 <path
@@ -28,7 +29,7 @@ function CollapsibleExample() {
               <span className=" noti-cart position-absolute">{cartList.length}</span>
               <span>Cart</span>
               </div>
-            </Nav.Link>
+            </Link>
           </Nav>
           <Nav>
             <Nav.Link href="#deets">Contact Us</Nav.Link>
