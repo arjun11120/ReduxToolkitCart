@@ -18,3 +18,8 @@
   border-radius: 50%;
   font-size: 13px;
 }
+.me-auto a{
+  padding: 5px !important;
+  text-decoration: none;
+  color: gray;
+}

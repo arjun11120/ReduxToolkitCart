@@ -43,7 +43,6 @@ function ProductListing() {
   
   const navigate = useNavigate();
   useEffect(() => {
-    // console.log(data);
     dispatch(getPost());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
