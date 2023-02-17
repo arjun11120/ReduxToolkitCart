@@ -19,7 +19,7 @@ import "./carts.css";
 import {
   removeCart,
   increment,
-  decrement,
+  decrement
 } from "../../redux/features/selectSlice";
 
 import Header from "../header/header";
@@ -28,7 +28,6 @@ import { Link } from "react-router-dom";
 
 function CartList() {
   const { cartList = [] } = useSelector((state) => state.cart);
-  console.log("cart count", cartList);
   const dispatch = useDispatch();
   const handleRemoveToCart = (user) => {
     dispatch(removeCart(user));
@@ -39,11 +38,14 @@ function CartList() {
   const handleDecrement = (id, count) => {
     dispatch(decrement(id, count));
   };
-  console.log(" cartlist in cart page", cartList);
+  const handleBuy = () => {
+    dispatch(handleBuy(cartList.map((item) => item.id, item.count)))
+  }
+  const totalPrice = cartList?.map(item => item.price * item.count ).reduce((prev, next) => prev + next , 0 );
   return (
     <>
       <Header />
-      <section className="h-100" style={{ backgroundColor: "#eee" }}>
+      <section className="h-100">
         <MDBContainer className="py-5 h-100">
           <MDBRow className="justify-content-center align-items-center h-100">
             <MDBCol md="10">
@@ -52,7 +54,7 @@ function CartList() {
                   <span>Check out</span>
                 </MDBTypography>
               </div>
-              <div className="d-flex">
+              <div className="d-block d-md-flex">
               <div>
               {cartList.map((products) => (
                 <MDBCard className="" key={products?.id}>
@@ -102,9 +104,10 @@ function CartList() {
                           <MDBIcon fas icon="plus" />
                         </Button>
                       </MDBCol>
-                      <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
+                      <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">  
+                      <h6 className="text-secondary">Price ${products?.price}</h6>
                         <MDBTypography tag="h5" className="mb-0">
-                          ${(products?.price * products?.count)}
+                          Total ${(products?.price * products?.count).toFixed(2)}
                         </MDBTypography>
                       </MDBCol>
                       <MDBCol md="1" lg="1" xl="1" className="text-end">
@@ -142,8 +145,18 @@ function CartList() {
                 <MDBCardBody>
                   <MDBRow className=" justify-content-between align-items-center ">
                     <MDBCol className="">
-                      <span className="">Total</span>
-                      <Button className="ms-3 sub-btn border-none" color="warning" block size="lg">
+                      <div className="item-total">
+                        <span className="">Total</span>
+                        <span>${totalPrice.toFixed(2)}</span>
+                      </div>
+                      <Button 
+                      className="ms-3 sub-btn border-none" 
+                      color="warning" 
+                      block size="lg"
+                      onClick={() =>
+                        handleBuy(cartList)
+                      }
+                      >
                         Buy
                       </Button>
                       
@@ -154,8 +167,6 @@ function CartList() {
               </MDBCard>
               </div>
               </div>
-
-              
             </MDBCol>
           </MDBRow>
         </MDBContainer>

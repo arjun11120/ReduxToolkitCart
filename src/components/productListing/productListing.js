@@ -3,19 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "../../redux/features/postSlice";
 import { Card, Button } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {faAdd} from "@fortawesome/free-solid-svg-icons"
-// import {faMinus} from "@fortawesome/free-solid-svg-icons"
+import Rating from '@mui/material/Rating';
 import Header from "../header/header"
 import { useNavigate } from 'react-router-dom';
 import{
   addToCart
 }
 from '../../redux/features/selectSlice';
-// import {
-//   increment,
-//   decrement,
-// } from '../../redux/features/counterSlice';
 
 import "./cards.css";
 
@@ -37,10 +31,7 @@ function ProductListing() {
   // };
   // const count = useSelector((state) => state.count.count)
   const { posts } = useSelector((state) => state.post);
-  const { cartList } = useSelector((state) => state.cart);
-  console.log(' cartlist in product page',cartList );
   const dispatch = useDispatch();
-  
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getPost());
@@ -51,40 +42,9 @@ function ProductListing() {
     
     navigate('/cart');
   };
-  // console.log('post',posts);
-  // const user = posts.filter((item) => item.id === data);
   const newPosts = posts;
   const user = newPosts.find((item) => item.id === data);
-  // const priceTotal = user?.price * count;
-//   const total = parseFloat(priceTotal.toFixed(2))  
-//   const [buyData,setByData] = useState([]);
-//   const handleBuy= () =>{
-//   setByData(
-//     buyData.push({
-//       image:user?.image
-//       })
-//   )
-// }
-// const handleAddToCart = (product) => {
-//   dispatch(addToCart(product));
-// };
-//   console.log(buyData);
-  // console.log("user",user);
-  // console.log("price :",user?.price,"count : ");
-  // const [total, setTotal] = useState(0);
-  // const [count,setCount] = useState(1);
-  // const addCount = () => { 
-  //   setCount(count => count + 1);
-  //   console.log("count",count);
-  //   setTotal(totalprice => ( count + 1 )  * user?.price);
-  // };
-  // const decCount = () => { 
-  //   setCount(count => (count > 1 ? (count -  1):count ));
-  //   setTotal(totalprice => ( count - 1 )  * user?.price);
-  // };
 
-  // console.log('total',total);
-  // console.log("selected user data", user);]
   return (
     <>
     <Header/>
@@ -107,9 +67,10 @@ function ProductListing() {
                 <div
                   className="user-rating"
                   style={
-                    user.rating.rate <= 2.5
-                      ? { background: "orange" }
-                      : { background: "green" }
+                    user?.rating.rate <= 2? { background: "red" }
+                    : user?.rating.rate <= 3?  { background: "orange" }
+                    : user?.rating.rate > 3?  {background : "green" }
+                    :null
                   }
                 >
                   {user.rating.rate}
@@ -148,33 +109,26 @@ function ProductListing() {
                 </div>
                 <div className="off-order">
                   <div className="counterItem">
-                    <h6>Order Details</h6>
-                    <div className="off-counter d-flex">
-                    <span className='count-text text-13'>Number of Items
-                    {/* <button className='round-btn' onClick={() => dispatch(decrement())}><FontAwesomeIcon className='text-secondary text-13' icon={faMinus}></FontAwesomeIcon></button> */}
-                    {/* <button className='round-btn' onClick={() => dispatch(increment())}><FontAwesomeIcon className='text-secondary text-13' icon={faAdd}></FontAwesomeIcon></button> */}
-                    {/* <button className='round-btn' onClick={addCount}><FontAwesomeIcon className='text-secondary text-13' icon={faAdd}></FontAwesomeIcon></button> */}
-                    {/* <button className='round-btn' onClick={addCount} ><FontAwesomeIcon className='text-secondary text-13' icon={faAdd}></FontAwesomeIcon></button> */}
-                    </span>
-                    <div className="off-sub">  
-                      {/* <span className='count-text text-13'>{count}</span> */}
-                    </div>
+                    
+                  <div>
+                    <Rating name="read-only" style={
+                    user?.rating.rate <= 2? { color: "red" }
+                    : user?.rating.rate <= 3?  { color: "orange" }
+                    : user?.rating.rate > 3?  { color: "green" }
+                    :null
+                  } defaultValue={2.5} value={user?.rating.rate} readOnly />
                     </div>
                     <div className="off-counter d-flex">
                       <span className='count-text text-13'>Price</span>
                       <span className='count-text text-13'>${user?.price}</span>
-                    </div>
-                    <div className="off-counter d-flex">
-                    <h6>Total</h6>
-                    {/* <h6>${total}</h6> */}
-                    {/* <h6>${Math.round(total * 100)/100}</h6> */}
                     </div>
                   </div> 
                 </div>  
               </div>
               <div className="off-btn">
                 <button 
-                // onClick={handleBuy}
+                value={user?.id}
+                onClick={() => handleAddToCart(user)}
                 >
                   PROCEED TO CART</button>
               </div>

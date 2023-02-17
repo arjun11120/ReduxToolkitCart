@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
-
+import {toast} from 'react-toastify';
 
 const INITIAL_STATE = {
 
   cartList:[],
-  cartCount: 0,
+  cartCount: 1,
   count:1 ,
-  totalPrice:0,
+  totalPrice:1,
 };
 
 const cartSlice = createSlice({ 
@@ -18,24 +17,21 @@ const cartSlice = createSlice({
         const itemExist = state.cartList.find((item) => item.id === action.payload.id);
         if(itemExist){
             state.cartList.forEach((item) => {
-                // if(item?.id === action.payload.id){
-                    state.count += 1;
-                // };
                 toast.info("Increased product quantity", {
-                    position: "bottom-left",
-                  });
-            });
+                  position: "bottom-left",
+                });
+            })
         }else{
             state.cartList.push({
             id:action.payload.id,
             image:action.payload.image,
             title:action.payload.title,
             price:action.payload.price,
-            count:state.count
+            count:state.count,
             });
             toast.success(`Product added to cart`, {
-                position: "bottom-left",
-              });
+              position: "bottom-left",
+            });
         }
     },
     removeCart: (state, action)=>{
@@ -46,16 +42,21 @@ const cartSlice = createSlice({
     },
     increment(state, action) {
       const item = state.cartList.find((item) => item.id === action.payload);
-      item.count++;
+      if(item.count < 10){
+      item.count++
+      }
     },
     decrement(state, action) {
       const item = state.cartList.find((item) => item.id === action.payload);
-      item.count--;
+      if(item.count>1){
+      item.count--
+      }
     },
-    totalCount(state,action){
-        console.log(action.payload.price,"action in total");
+    handleBuy(state,action){
+      
+      console.log(action.payload,"action.payload");
     }
   }})
-export const { addToCart , removeCart ,increment ,decrement ,totalCount} = cartSlice.actions;
+export const { addToCart , removeCart ,increment ,decrement ,totalCount ,handleBuy} = cartSlice.actions;
 
 export default cartSlice.reducer;

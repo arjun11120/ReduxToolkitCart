@@ -1,52 +1,69 @@
-section{
-    background: white;
+section {
+    background: #eee;
 }
 .lead {
-    font-size: 10px !important;
+  font-size: 10px !important;
 }
 .img-fluid {
-    max-width: 50% !important;
+  max-width: 50% !important;
 }
-.fw-normal{
-    font-size: 12px;
-    margin: 5px;
+.fw-normal {
+  font-size: 12px;
+  margin: 5px;
 }
-.fw-normal span{
-    font-size: 30px;
-    font-weight: 600;
-
+.fw-normal span {
+  font-size: 30px;
+  font-weight: 600;
 }
-.sub-btn{
-    background: var(--bg-main)!important;
+.sub-btn {
+  background: var(--bg-main) !important;
+  width: 150px;
+  height: auto;
 }
-.text-white{
-    color:var(--color-bg);
+.text-white {
+  color: var(--color-bg);
 }
-.border-none{
-    border: none !important;
+.border-none {
+  border: none !important;
 }
 .card-body {
-    padding: 0 20px !important;
+  padding: 0 20px !important;
 }
 .img-fluid {
-    max-width: 35% !important;
+  max-width: 35% !important;
 }
-.inc-btn{
-    border: 1px solid gray!important;
-    border-radius: 0px !important;
-    background: white !important;
-    color: gray;
-    width: 35px !important;
-    height: 35px !important;
+.inc-btn {
+  border: 1px solid gray !important;
+  border-radius: 0px !important;
+  background: white !important;
+  color: gray;
+  width: 35px !important;
+  height: 35px !important;
 }
-.card{
-    border: none !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    margin: 10px;
-    padding: 10px;
+.card {
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin: 10px;
+  padding: 10px;
 }
-.inc-btn svg{
-    vertical-align: super;
-    color: black;
-    margin-top: 5px;
+.inc-btn svg {
+  vertical-align: super;
+  color: black;
+  margin-top: 5px;
+}
+h5 {
+  font-size: 13px !important;
+}
+h6 {
+  font-size: 8px !important;
+  margin: 0px !important;
+}
+.item-total {
+  display: flex;
+  justify-content: space-around;
+}
+.item-total span {
+  color: #b4b4b4;
+  font-weight: 600;
+  font-size: 16px;
 }
