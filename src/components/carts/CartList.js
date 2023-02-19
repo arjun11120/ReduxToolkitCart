@@ -37,9 +37,6 @@ function CartList() {
   };
   const handleDecrement = (id, count) => {
     dispatch(decrement(id, count));
-  };
-  const handleBuy = () => {
-    dispatch(handleBuy(cartList.map((item) => item.id, item.count)))
   }
   const totalPrice = cartList?.map(item => item.price * item.count ).reduce((prev, next) => prev + next , 0 );
   return (
@@ -153,9 +150,6 @@ function CartList() {
                       className="ms-3 sub-btn border-none" 
                       color="warning" 
                       block size="lg"
-                      onClick={() =>
-                        handleBuy(cartList)
-                      }
                       >
                         Buy
                       </Button>
