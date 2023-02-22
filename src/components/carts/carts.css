@@ -63,7 +63,6 @@ h6 {
   justify-content: space-around;
 }
 .item-total span {
-  color: #b4b4b4;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
 }

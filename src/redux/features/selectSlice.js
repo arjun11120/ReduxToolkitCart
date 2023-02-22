@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   cartCount: 1,
   count:1 ,
   totalPrice:1,
+  selectFilter:''
 };
 
 const cartSlice = createSlice({ 
@@ -40,23 +41,26 @@ const cartSlice = createSlice({
         state.cartList = itemExist;
       }
     },
-    increment(state, action) {
+    increment:(state, action)=> {
       const item = state.cartList.find((item) => item.id === action.payload);
       if(item.count < 10){
       item.count++
       }
     },
-    decrement(state, action) {
-      const item = state.cartList.find((item) => item.id === action.payload);
+    decrement:(state, action)=> {
+      const item = state.cartList.find((item) => item.id === action.payload );
       if(item.count>1){
       item.count--
       }
     },
+    productFilter: (state,action) =>{
+      if(state.selectFilter !== 'all') {
+        state.selectFilter=action.payload;
+      }
+  },
     handleBuy(state,action){
-      
-      console.log(action.payload,"action.payload");
     }
   }})
-export const { addToCart , removeCart ,increment ,decrement ,totalCount ,handleBuy} = cartSlice.actions;
+export const { addToCart , removeCart ,increment ,decrement ,totalCount ,productFilter ,handleBuy} = cartSlice.actions;
 
 export default cartSlice.reducer;

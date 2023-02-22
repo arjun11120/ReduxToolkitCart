@@ -27,6 +27,8 @@ import "../header/header.css";
 import { Link } from "react-router-dom";
 
 function CartList() {
+  const { posts } = useSelector((state) => state.post);
+  console.log('posts',posts);
   const { cartList = [] } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const handleRemoveToCart = (user) => {
@@ -38,8 +40,8 @@ function CartList() {
   const handleDecrement = (id, count) => {
     dispatch(decrement(id, count));
   };
-  const handleBuy = () => {
-    dispatch(handleBuy(cartList.map((item) => item.id, item.count)))
+  const handleBuy = (buyProduct) => {
+    dispatch(handleBuy(buyProduct))
   }
   const totalPrice = cartList?.map(item => item.price * item.count ).reduce((prev, next) => prev + next , 0 );
   return (
@@ -153,8 +155,9 @@ function CartList() {
                       className="ms-3 sub-btn border-none" 
                       color="warning" 
                       block size="lg"
+                      value={cartList}
                       onClick={() =>
-                        handleBuy(cartList)
+                        handleBuy()
                       }
                       >
                         Buy

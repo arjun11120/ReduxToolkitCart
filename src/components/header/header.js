@@ -7,11 +7,12 @@ import { Link } from "react-router-dom";
 
 function CollapsibleExample() {
   const { cartList = [] } = useSelector((state) => state.cart);
+  
   // console.log(' cartlist in header page',cartList );
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">WeCart</Navbar.Brand>
+        <Navbar.Brand href="#home">One</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

@@ -1,6 +1,16 @@
+*{  
+  font-family: cursive;
+}
+.navbar-brand {
+  font-size: 25px !important;
+  font-weight: 600;
+}
 .cart-icon {
   height: 14px;
   vertical-align: middle;
+}
+a :hover{
+  color:gray ;
 }
 .me-auto span {
   padding: 5px;

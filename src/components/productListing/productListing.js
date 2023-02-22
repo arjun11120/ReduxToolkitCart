@@ -5,6 +5,7 @@ import { Card, Button } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Rating from '@mui/material/Rating';
 import Header from "../header/header"
+import Filter from "../Filter/filter"
 import { useNavigate } from 'react-router-dom';
 import{
   addToCart
@@ -22,34 +23,33 @@ function ProductListing() {
     setShow(true);
     setData(id)
   };
-    // const [show, setShow] = useState(false);
-  // const [data, setId] = useState(1);
-  // const handleClose = () => setShow(false);
-  // const handleShow = (id) => {
-  //   setShow(true);
-  //   setId(id);
-  // };
-  // const count = useSelector((state) => state.count.count)
+  let filterProducts = [];
+  const selectData = useSelector((state)=> state.cart.selectFilter)
   const { posts } = useSelector((state) => state.post);
+  if(selectData !== ''){
+    filterProducts = posts.filter((items)=>items.category === selectData);
+  }else{
+    filterProducts = posts;
+  }
+  const newPosts = posts;
+  const user = newPosts.find((item) => item.id === data);
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getPost());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const handleAddToCart = (user) => {
-    dispatch(addToCart(user));
-    
+  const handleAddToCart = (cart) => {
+    dispatch(addToCart(cart)); 
     navigate('/cart');
   };
-  const newPosts = posts;
-  const user = newPosts.find((item) => item.id === data);
-
   return (
     <>
     <Header/>
+    <Filter/>
       <div className="card-items align-center" >
-        {posts.map((user) => (
+        {filterProducts.map((user) => (
           <div className="d-inline-flex" 
            key={user.id}>
             <Card className="cardLay m-2 p-2">
@@ -82,7 +82,6 @@ function ProductListing() {
                 </div>
                 <div className="position-relative m-0">
                 <Button
-                  value={user.id}
                   className=" bottom-0 start-0 btpBtn "
                   onClick={() => handleAddToCart(user)}
                 >
@@ -127,7 +126,6 @@ function ProductListing() {
               </div>
               <div className="off-btn">
                 <button 
-                value={user?.id}
                 onClick={() => handleAddToCart(user)}
                 >
                   PROCEED TO CART</button>
